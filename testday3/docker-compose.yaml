@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  testday3-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nickhartono/testday3:1.0.0
+    container_name: testday3-app
+    ports:
+      - "7070:8080"
+
