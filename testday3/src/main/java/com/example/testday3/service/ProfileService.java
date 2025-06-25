@@ -1,5 +1,7 @@
 package com.example.testday3.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import com.example.testday3.model.Profile;
@@ -28,5 +30,14 @@ public class ProfileService {
                 .fullName(profile.getFullName())
                 .email(profile.getEmail())
                 .phoneNumber(profile.getPhone()).build();
+    }
+
+    public List<ProfileResponse> getAllProfiles() {
+        return (List<ProfileResponse>) profileRepository.findAll().stream().map(x -> {
+            return ProfileResponse.builder()
+                                    .fullName(x.getFullName())
+                                    .email(x.getEmail())
+                                    .phoneNumber(x.getPhone()).build();
+        }).toList();
     }
 }

@@ -8,7 +8,10 @@ import com.example.testday3.service.ProfileService;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,4 +28,8 @@ public class ProfileController {
         return ResponseEntity.ok(profileService.saveProfile(profileRequest));
     }
     
+    @GetMapping("/profile")
+    public ResponseEntity<List<ProfileResponse>> getAllProfiles(@RequestBody ProfileRequest profileRequest) {
+        return ResponseEntity.ok(profileService.getAllProfiles());
+    }
 }
